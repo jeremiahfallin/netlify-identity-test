@@ -26,7 +26,6 @@ const Products = () => {
   return (
     <div>
       <h1>Products</h1>
-      <p>To login use the email: geeks@snipcart.com with password: admin</p>
 
       <ul>
         {products.map((o, index) => (

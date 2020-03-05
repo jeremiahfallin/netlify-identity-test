@@ -8,6 +8,27 @@ const Header = ({ siteTitle }) => {
     netlifyIdentity.init()
   }, [])
 
+  const netlifyAuth = {
+    isAuthenticated: false,
+    user: null,
+    authenticate(callback) {
+      this.isAuthenticated = true
+      netlifyIdentity.open()
+      netlifyIdentity.on("login", user => {
+        this.user = user
+        callback(user)
+      })
+    },
+    signout(callback) {
+      this.isAuthenticated = false
+      netlifyIdentity.logout()
+      netlifyIdentity.on("logout", () => {
+        this.user = null
+        callback()
+      })
+    },
+  }
+
   return (
     <header
       style={{
@@ -16,6 +37,7 @@ const Header = ({ siteTitle }) => {
       }}
     >
       <div data-netlify-identity-button>Login</div>
+      <button onClick={netlifyAuth.authenticate()}>Login</button>
       <div
         style={{
           margin: `0 auto`,
