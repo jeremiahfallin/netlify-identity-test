@@ -8,6 +8,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import IdentityModal, {
+  useIdentityContext,
+  IdentityContextProvider,
+} from "react-netlify-identity-widget"
 
 import Header from "./header"
 import "./layout.css"
@@ -22,6 +26,7 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const url = "https://z1j5v.sse.codesandbox.io/"
 
   return (
     <>
@@ -41,6 +46,34 @@ const Layout = ({ children }) => {
         </footer>
       </div>
     </>
+  )
+}
+
+function AuthStatusView() {
+  const identity = useIdentityContext()
+  const [dialog, setDialog] = React.useState(false)
+  const name =
+    (identity &&
+      identity.user &&
+      identity.user.user_metadata &&
+      identity.user.user_metadata.name) ||
+    "NoName"
+  const isLoggedIn = identity && identity.isLoggedIn
+  return (
+    <div>
+      <div>
+        <button className="RNIW_btn" onClick={() => setDialog(true)}>
+          {isLoggedIn ? `Hello ${name}, Log out here!` : "Log In"}
+        </button>
+      </div>
+      <IdentityModal
+        showDialog={dialog}
+        onCloseDialog={() => setDialog(false)}
+        onLogin={user => console.log("hello ", user.user_metadata)}
+        onSignup={user => console.log("welcome ", user.user_metadata)}
+        onLogout={() => console.log("bye ", name)}
+      />
+    </div>
   )
 }
 

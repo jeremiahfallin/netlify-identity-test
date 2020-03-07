@@ -18,8 +18,6 @@ const Products = () => {
   }
 
   useEffect(() => {
-    netlifyIdentity.on("login", user => updateProducts())
-    netlifyIdentity.on("logout", () => updateProducts())
     updateProducts()
   }, [])
 
