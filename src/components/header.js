@@ -28,7 +28,6 @@ const netlifyAuth = {
 const Header = () => {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false)
   useEffect(() => {
-    window.netlifyIdentity = netlifyIdentity
     netlifyIdentity.init()
   }, [])
 
