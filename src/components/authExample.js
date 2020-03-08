@@ -18,7 +18,12 @@ const AuthExample = () => {
     netlifyIdentity.open()
     netlifyIdentity.on("login", user => console.log("login", user))
   }
-  return <button onClick={e => login()}>Log in</button>
+  return (
+    <>
+      <button onClick={e => login()}>Log in</button>
+      <Protected />
+    </>
+  )
 }
 
 // const AuthExample = () => {

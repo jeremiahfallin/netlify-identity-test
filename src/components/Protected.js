@@ -6,11 +6,11 @@ export default function Protected() {
   return (
     <div>
       <h3>Protected Page</h3>
-      {/* {user && user.email && (
+      {user && user.email && (
         <>
           You are logged in as <b>{user.email}</b>
         </>
-      )} */}
+      )}
     </div>
   )
 }
