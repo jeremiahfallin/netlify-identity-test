@@ -30,7 +30,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify-identity`,
       options: {
-        url: `https://z1j5v.sse.codesandbox.io/`, // required!
+        url: `https://frosty-northcutt-ff88a1.netlify.com/`, // required!
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
