@@ -16,9 +16,7 @@ const AuthExample = () => {
 
   const login = () => {
     netlifyIdentity.open()
-    netlifyIdentity.on("login", user => {
-      this.user = user
-    })
+    netlifyIdentity.on("login", user => console.log("login", user))
   }
   return <button onClick={e => login()}>Log in</button>
 }
