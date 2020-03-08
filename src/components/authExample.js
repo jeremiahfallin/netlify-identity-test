@@ -20,7 +20,7 @@ const AuthExample = () => {
   }
 
   const logout = () => {
-    netlifyIdentity.on("logout", () => console.log("Logged out"))
+    netlifyIdentity.on("logout", () => user => setUser(user))
   }
 
   console.log(user)
