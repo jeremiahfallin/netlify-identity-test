@@ -59,17 +59,17 @@ const netlifyAuth = {
   },
 }
 
-const AuthButton = withRouter(({ history }) =>
+const AuthButton = withRouter(() =>
   netlifyAuth.isAuthenticated ? (
     <p>
       Welcome!{" "}
-      <button
+      {/* <button
         onClick={() => {
           netlifyAuth.signout(() => history.push("/"))
         }}
       >
         Sign out
-      </button>
+      </button> */}
     </p>
   ) : (
     <p>You are not logged in.</p>
@@ -119,4 +119,5 @@ class Login extends React.Component {
     )
   }
 }
+
 export default AuthExample
