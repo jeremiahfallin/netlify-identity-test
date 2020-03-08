@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Protected from "./Protected"
 import Public from "./Public"
 import netlifyIdentity from "netlify-identity-widget"
@@ -12,16 +12,17 @@ import { Router, Route, Link, Redirect, createHistory } from "@reach/router"
 // 4. Click the back button, note the URL each time
 
 const AuthExample = () => {
-  useEffect(() => {}, [])
+  const [user, setUser] = useState(netlifyIdentity.currentUser())
 
   const login = () => {
     netlifyIdentity.open()
-    netlifyIdentity.on("login", user => console.log("login", user))
+    netlifyIdentity.on("login", user => setUser(user))
   }
+
   return (
     <>
       <button onClick={e => login()}>Log in</button>
-      <Protected />
+      <Protected user={user} />
     </>
   )
 }
