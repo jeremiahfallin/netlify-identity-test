@@ -6,6 +6,7 @@ export default function Protected() {
   return (
     <div>
       <h3>Protected Page</h3>
+      {console.log(user)}
       {user && user.email && (
         <>
           You are logged in as <b>{user.email}</b>
