@@ -58,14 +58,9 @@ function AuthStatusView() {
       identity.user.user_metadata &&
       identity.user.user_metadata.name) ||
     "NoName"
-  const isLoggedIn = identity && identity.isLoggedIn
   return (
     <div>
-      <div>
-        <button className="RNIW_btn" onClick={() => setDialog(true)}>
-          {isLoggedIn ? `Hello ${name}, Log out here!` : "Log In"}
-        </button>
-      </div>
+      <div />
       <IdentityModal
         showDialog={dialog}
         onCloseDialog={() => setDialog(false)}
