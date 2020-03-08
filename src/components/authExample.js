@@ -19,9 +19,19 @@ const AuthExample = () => {
     netlifyIdentity.on("login", user => setUser(user))
   }
 
+  const logout = () => {
+    netlifyIdentity.on("logout", () => console.log("Logged out"))
+  }
+
+  console.log(user)
+
   return (
     <>
-      <button onClick={e => login()}>Log in</button>
+      {user ? (
+        <button onClick={e => logout()}>Log out</button>
+      ) : (
+        <button onClick={e => login()}>Log in</button>
+      )}
       <Protected user={user} />
     </>
   )

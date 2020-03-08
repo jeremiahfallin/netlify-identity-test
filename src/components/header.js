@@ -50,7 +50,6 @@ const Header = () => {
         ) : (
           <Link to="/app/login">Login</Link>
         )} */}
-        <button onClick={e => login()}>Login</button>
       </nav>
     </div>
   )

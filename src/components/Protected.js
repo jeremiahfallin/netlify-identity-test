@@ -2,11 +2,9 @@ import React from "react"
 import netlifyIdentity from "netlify-identity-widget"
 
 export default function Protected({ user }) {
-  console.log({ user })
   return (
     <div>
       <h3>Protected Page</h3>
-      {console.log(user)}
       {user && user.email && (
         <>
           You are logged in as <b>{user.email}</b>
